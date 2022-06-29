@@ -1,0 +1,10 @@
+173929967/
+190352989/
+bin/
+include/
+lib/
+lib64/
+share/
+*.cfg
+App/__pycache__
+App/src/__pycache__
