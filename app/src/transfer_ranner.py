@@ -1,4 +1,3 @@
-from tracemalloc import start
 import torch
 from src.model_and_losses_getter import ModelGetter
 from datetime import datetime
@@ -75,30 +74,3 @@ class StyleTransferer():
 
         return self.paths
 
-
-    # def train(self):
-    #     with torch.no_grad():
-    #         self.input_img.clamp_(0, 1)
-
-    #     self.optimizer.zero_grad()
-    #     self.model(self.input_img)
-    #     style_score = 0
-    #     content_score = 0
-
-    #     for sl in self.style_losses:
-    #         style_score += sl.loss
-    #     for cl in self.content_losses:
-    #         content_score += cl.loss
-
-    #     style_score *= self.style_weight
-    #     content_score *= self.content_weight
-
-    #     self.loss = style_score + content_score
-    #     self.loss.backward()
-
-    #     self.run += 1
-    #     if self.run % (self.num_steps / 2) == 0:
-    #         path = os.path.join(f"{self.path_user_folder}", f"{self.start_time}_{self.run}.jpg")
-    #         self.paths.append(path)
-    #         save_image(self.input_img, path)
-    #     return style_score + content_score

@@ -6,6 +6,6 @@ lib/
 lib64/
 share/
 *.cfg
-App/__pycache__
-App/src/__pycache__
+app/__pycache__
+app/src/__pycache__
 .env

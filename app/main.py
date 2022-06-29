@@ -1,13 +1,14 @@
 import telebot
-from telebot import types
-
-from datetime import datetime
 import os
-
 import torch
-from main import handle
+
+from telebot import types
+from datetime import datetime
+from handle import ImageHandler
 from PIL import Image
 from dotenv import load_dotenv
+from src.DepthGetter import DepthValueGetter
+from src.DefaultPictureGetter import DefaultPictureGetter
 
 load_dotenv()
 bot = telebot.TeleBot(os.environ["bot_key"])
@@ -80,29 +81,13 @@ def get_style(message, file_name_content, custom_stile):
         with open(file_name_style, "wb") as code:
             code.write(file_style)
     else:
-        if (message.text == 'Ван гог'):
-            file_name_style = "./default_stiles/van_gog.jpg"
-        if (message.text == 'Пикассо'):
-            file_name_style = "./default_stiles/pikasso.jpeg"
-        if (message.text == 'Космос'):
-            file_name_style = "./default_stiles/kosmos.jpg"
-        if (message.text == 'Мазки'):
-            file_name_style = "./default_stiles/mazki.jpg"
-        if (message.text == 'Лава'):
-            file_name_style = "./default_stiles/lava.jpg"
-        if (message.text == 'Лёд'):
-            file_name_style = "./default_stiles/led.jpg"
+        file_name_style = DefaultPictureGetter().get(message.text)
     bot.register_next_step_handler(message, select_deph, file_name_content, file_name_style)
 
 def select_deph(message, file_name_content, file_name_style):
-    if (message.text == 'Минимальная'):
-        depth = 30
-    if (message.text == 'Средняя'):
-        depth = 60
-    if (message.text == 'Максимальная'):
-        depth = 90
+    depth = DepthValueGetter().get(message.text)
     bot.send_message(message.chat.id, 'Ну поехали) Как все сделаю дам ответ', reply_markup = types.ReplyKeyboardRemove())
-    paths = handle(os.path.abspath(file_name_content), os.path.abspath(file_name_style), message.chat.id, depth)
+    paths = ImageHandler(os.path.abspath(file_name_content), os.path.abspath(file_name_style), message.chat.id, depth).run()
     bot.send_message(message.chat.id, 'Вроде все получилось, как тебе?')
 
     for i in paths:
