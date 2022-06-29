@@ -8,8 +8,10 @@ from datetime import datetime
 from aiogram.dispatcher import FSMContext
 from main import handle
 from PIL import Image
+from dotenv import load_dotenv
 
-API_TOKEN = '5373418576:AAFyzloFVPxI_Ob2z8vTcdTsoKGZlu6Vy9Q'
+load_dotenv()
+API_TOKEN = os.environ["bot_key"]
 class Form(StatesGroup):
     wait_content = State()
     wait_style_type = State()

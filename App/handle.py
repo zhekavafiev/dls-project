@@ -43,7 +43,6 @@ class ImageHandler():
         return self.input_img
 
     def run(self):
-        print(self.get_input_image())
         num_steps = self.depth / 100 * 800
         return StyleTransferer(self.get_input_image()).run_style_transfer(
             self.get_model(),
