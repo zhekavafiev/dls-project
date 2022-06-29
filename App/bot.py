@@ -7,8 +7,10 @@ import os
 import torch
 from main import handle
 from PIL import Image
+from dotenv import load_dotenv
 
-bot = telebot.TeleBot('5373418576:AAFyzloFVPxI_Ob2z8vTcdTsoKGZlu6Vy9Q')
+load_dotenv()
+bot = telebot.TeleBot(os.environ["bot_key"])
     
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -100,11 +102,6 @@ def select_deph(message, file_name_content, file_name_style):
     if (message.text == 'Максимальная'):
         depth = 90
     bot.send_message(message.chat.id, 'Ну поехали) Как все сделаю дам ответ', reply_markup = types.ReplyKeyboardRemove())
-#     bot.register_next_step_handler(message, photo_send, file_name_content, file_name_style, depth)
-
-# async def photo_send(message, file_name_content, file_name_style, depth):
-    # bot.send_message(message.chat.id, 'Вроде все получилось, как тебе?')
-
     paths = handle(os.path.abspath(file_name_content), os.path.abspath(file_name_style), message.chat.id, depth)
     bot.send_message(message.chat.id, 'Вроде все получилось, как тебе?')
 

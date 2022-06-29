@@ -8,3 +8,4 @@ share/
 *.cfg
 App/__pycache__
 App/src/__pycache__
+.env
