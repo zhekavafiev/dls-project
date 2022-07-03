@@ -8,6 +8,8 @@ class DefaultPictureGetter:
             file_name_style = "./default_stiles/kosmos.jpg"
         if (text == 'Мазки'):
             file_name_style = "./default_stiles/mazki.jpg"
+        if (text == 'Зеленые линии'):
+            file_name_style = "./default_stiles/green_lines.jpg"
         if (text == 'Лава'):
             file_name_style = "./default_stiles/lava.jpg"
         if (text == 'Лёд'):
