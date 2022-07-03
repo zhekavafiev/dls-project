@@ -61,14 +61,14 @@ class StyleTransferer():
                 loss.backward()
 
                 self.run += 1
-                if self.run % (self.num_steps / 2) == 0:
+                if self.run % (num_steps / 2) == 0:
                     path = os.path.join(f"{self.path_user_folder}", f"{self.start_time}_{self.run}.jpg")
                     self.paths.append(path)
                     save_image(self.input_img, path)
 
                 return style_score + content_score
 
-        self.optimizer.step(closure)
+            self.optimizer.step(closure)
         with torch.no_grad():
             self.input_img.clamp_(0, 1)
 
