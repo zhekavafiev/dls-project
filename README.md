@@ -18,22 +18,22 @@ Python 3.9.7
 
 ## Examples
 
-Original
-![plot](./images/original.jpg)
-Van Gog
-![plot](./images/van_gog.jpg)
-Pikasso
-![plot](./images/pikasso.jpg)
-Кисть
-![plot](./images/kist.jpg)
-Космос
-![plot](./images/kosmos.jpg)
-Зеленые линии
-![plot](./images/green_lines.jpg)
-Лава
-![plot](./images/lava.jpg)
-Лёд
-![plot](./images/led.jpg)
+Original  
+![plot](./images/original.jpg)  
+Van Gog  
+![plot](./images/van_gog.jpg)  
+Pikasso  
+![plot](./images/pikasso.jpg)  
+Кисть  
+![plot](./images/kist.jpg)  
+Космос  
+![plot](./images/kosmos.jpg)  
+Зеленые линии  
+![plot](./images/green_lines.jpg)  
+Лава  
+![plot](./images/lava.jpg)  
+Лёд  
+![plot](./images/led.jpg)  
 
 ## Install
 git clone https://github.com/zhekavafiev/dls-project.git  
